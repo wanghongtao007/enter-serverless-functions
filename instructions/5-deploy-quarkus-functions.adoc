@@ -8,6 +8,7 @@ Add an OpenShift and Knative Funqy extensions then remove an existing AWS extens
 ----
 quarkus ext add quarkus-funqy-knative-events quarkus-openshift
 
+//由于不是在aws上运行，所以下面这行可以不运行
 quarkus ext remove quarkus-funqy-amazon-lambda
 ----
 
@@ -16,6 +17,7 @@ Update the `application.properties` for OpenShift Serverless deployment:
 [NOTE]
 ====
 Replace `username` with your own account in the developer sandbox.
+把下面的username可以改成admin（当前用户）默认的namespace还是在default里，
 ====
 
 [source,yaml]
@@ -55,6 +57,13 @@ Or run the following maven package command:
 ----
 ./mvnw clean package -DskipTests
 ----
+如果不能连外网，这里会报错。修改以下位置：
+1、修改
+vi src/main/resources/application.properties
+增加
+quarkus.openshift.build-strategy=docker
+2、vi src/main/docker/Dockerfile.jvm
+FROM registry.ocp4.example.com/ubi8/openjdk-17:latest
 
 The output will end with `BUILD SUCCESS`. You can overwrite the pod label to show the Quarkus icon by running the following https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html[oc^] command:
 
