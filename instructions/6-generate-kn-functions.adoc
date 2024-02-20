@@ -33,12 +33,13 @@ Inspect the new function project such as `func.yaml` and `Function.java`.
 
 Deploy the function directly to Red Hat OpenShift. Make sure to change the directory where the _func.yaml_ exists:
 
-Replace `YOUR_USERNAME` with your own account in the developer sandbox. You also need to replace `YOUR_CONTAINER_REGISTRY` with an external container registry that you want to push the image. For example, *quay.io/danieloh30*
+Replace `YOUR_USERNAME` with your own account in the developer sandbox. You also need to replace `YOUR_CONTAINER_REGISTRY` with an external container registry that you want to push the image. For example, *quay.io/danieloh30* docker.io/wanhuatong
 
 [source,sh]
 ----
 cd quarkus-func
 kn func deploy -r YOUR_CONTAINER_REGISTRY -n YOUR_USERNAME-dev -v
+kn func deploy -r wanhuatong -n admin-dev -v
 ----
 
 [NOTE]
