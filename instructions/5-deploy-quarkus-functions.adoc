@@ -46,6 +46,30 @@ Copy the `oc login` command then paste it in your working terminal.
 
 Run the following Maven command to deploy the function to OpenShift Serverless:
 
+[NOTE]
+====
+把下面这个secret加到拉取身份里，不然会拉取失败
+====
+[source,sh]
+----
+oc patch serviceaccount default -p "{\"imagePullSecrets\": [{\"name\": \"enter-serverless-function-push-secret\"}]}"
+----
+或者是：
+[source,yaml]
+----
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hello
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+      - name: <secret-name>
+      containers:
+        - image: ghcr.io/knative/helloworld-go:latest
+----
+
 [source,sh]
 ----
 quarkus build --no-tests
