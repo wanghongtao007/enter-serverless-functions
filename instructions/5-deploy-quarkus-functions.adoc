@@ -22,11 +22,18 @@ Replace `username` with your own account in the developer sandbox.
 
 [source,yaml]
 ----
-quarkus.container-image.group=username-dev
-quarkus.container-image.registry=image-registry.openshift-image-registry.svc:5000
+quarkus.container-image.group=admin-dev
+quarkus.container-image.registry=registry.ocp4.example.com
+#quarkus.container-image.registry=image-registry.openshift-image-registry.svc:5000
+quarkus.container-image.insecure=true
+quarkus.container-image.push=true
+quarkus.container-image.username=test1
+quarkus.container-image.password=Redhat!23
+
 quarkus.kubernetes-client.trust-certs=true
 quarkus.kubernetes.deploy=true
 quarkus.kubernetes.deployment-target=knative
+quarkus.openshift.build-strategy=docker
 ----
 
 [NOTE]
