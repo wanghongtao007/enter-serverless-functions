@@ -35,15 +35,15 @@ Deploy the function directly to Red Hat OpenShift. Make sure to change the direc
 
 Replace `YOUR_USERNAME` with your own account in the developer sandbox. You also need to replace `YOUR_CONTAINER_REGISTRY` with an external container registry that you want to push the image. For example, *quay.io/danieloh30* docker.io/wanhuatong
 
-期间出现输入框，输入docker.io的用户名和密码（这里需要跳板机连外网）：
+期间出现输入框，输入镜像仓库的用户名和密码：
 wanhuatong
 dckr_pat_MKgLNzAh4RyYDff_usJXXTPz4hY
 
 [source,sh]
 ----
 cd quarkus-func
-kn func deploy -r YOUR_CONTAINER_REGISTRY -n YOUR_USERNAME-dev -v
-kn func deploy -r wanhuatong -n admin-dev -v
+#kn func deploy -r YOUR_CONTAINER_REGISTRY -n YOUR_USERNAME-dev -v
+kn func deploy  -n admin-dev -v --registry registry.ocp4.example.com/admin-dev
 ----
 
 [NOTE]
