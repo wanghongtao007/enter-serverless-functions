@@ -67,6 +67,10 @@ FROM registry.ocp4.example.com/ubi8/openjdk-17:latest
 
 The output will end with `BUILD SUCCESS`. You can overwrite the pod label to show the Quarkus icon by running the following https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html[oc^] command:
 
+[source,sh]
+----
+oc patch serviceaccount default -p "{\"imagePullSecrets\": [{\"name\": \"enter-serverless-function-push-secret\"}]}"
+----
 
 [source,sh]
 ----
