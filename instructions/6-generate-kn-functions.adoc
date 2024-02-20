@@ -66,7 +66,8 @@ Send a new `cloudevent` message to the new function using Kn func emit:
 
 [source,sh]
 ----
-kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=YOUR_FUNCTION_URL
+#kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=YOUR_FUNCTION_URL
+kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=https://quarkus-func-admin-dev.apps.ocp4.example.com
 ----
 
 The output should look like:
