@@ -107,6 +107,6 @@ curl localhost:8080/hello
 
 Keep *running* your Quarkus dev mode!! 
 
-➡️ link:./3-deploy-aws-lambda.adoc[3. Deploy to AWS Lambda with HTTP API]
+➡️ link:./5-deploy-quarkus-functions.adoc[5. Deploy the function to Red Hat OpenShift Serverless]
 
 ⬅️ link:./1-prerequisites.adoc[1. Prerequisites]
