@@ -2,13 +2,15 @@
 
 [NOTE]
 ====
-Red Hat OpenShift Serverless Function is still a Tech Preview feature. If you haven't installed Knative command (kn) yet, find more information https://docs.openshift.com/container-platform/4.11/serverless/cli_tools/advanced-kn-config.html[here^].
-
-In case you want to install *kn* command tool in the Developer Sandbox, run the following *curl* command. It will download the *kn* tool in */tmp* directory.
+Download the Knative (kn) CLI from the Command Line Tools page. You can access the Command Line Tools page by clicking the question circle icon in the top right corner of the web console and selecting Command Line Tools in the list.
 
 [source,sh]
 ----
-curl -L  -o /tmp/kn https://github.com/knative/client/releases/download/knative-v1.8.1/kn-linux-amd64 ; chmod a+x /tmp/kn; /tmp/kn version
+curl -L  -o https://kn-openshift-serverless.apps.example.com/kn-linux-amd64.tar.gz
+tar -xf kn-linux-amd64.tar.gz
+cp kn /usr/bin/
+oc get ConsoleCLIDownload
+oc get route -n openshift-serverless
 ----
 ====
 
@@ -16,7 +18,7 @@ Run the following command:
 
 [source,sh]
 ----
-cd ..
+cd 
 kn func create quarkus-func -l quarkus -t cloudevents
 ----
 
