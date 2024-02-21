@@ -14,7 +14,7 @@ quarkus create app enter-serverless-function
 
 ----
 
-The output looks like:
+结果如下所示:
 
 [source,sh]
 ----
@@ -34,12 +34,10 @@ applying codestarts...
 [SUCCESS] ✅  quarkus project has been successfully generated in:
 --> /YOUR_WORKING_DIR/enter-serverless-function
 -----------
-Navigate into this directory and get started: quarkus dev
+进入新创建的文件夹，然后进入开发模式: quarkus dev
 ----
 
-== Test the application locally
-
-First thing first! Run the Quarkus Dev Mode using the following Quarkus CLI:
+== 在本地调试应用
 
 [source,sh]
 ----
@@ -47,7 +45,7 @@ cd enter-serverless-function
 quarkus dev
 ----
 
-The output looks like:
+输出如下所示:
 
 [source,sh]
 ----
@@ -69,19 +67,19 @@ Press [r] to resume testing, [o] Toggle test output, [:] for the terminal, [h] f
 
 Press `r` to start the _continuous testing_ then press `d` to open a _DEV UI_. It will open a new web browser then access to http://localhost:8080/q/dev/[DEV UI^].
 
-You'll also see `All tests passed` on the right bottom that points the result of the continuous testing.
+您还会在右下角看到“所有测试都通过了”，指出了continuous testing的结果 .
 
 image::../images/devui.png[devui]
 
-When you select the down arrow on the left bottom, you will see the readonly log terminal. 
+当您选择左下角的向下箭头时，您将看到只读日志终端。 
 
 image::../images/devui-open-terminal.png[devui-open-terminal]
 
-Select `Continuous Testing` menu on the left, you will see the same testing result as you saw in your terminal.
+选择左侧的“Continuous Testing”菜单，您将看到与您在终端中看到的相同的测试结果.
 
 image::../images/devui-ct.png[devui-ct]
 
-Verify the RESTful API if it works well. For example, use https://httpie.io[HTTPie^] to invoke the endpoint in your local terminal:
+（可选）Verify the RESTful API if it works well. For example, use https://httpie.io[HTTPie^] to invoke the endpoint in your local terminal:
 
 [source,sh]
 ----
@@ -99,14 +97,14 @@ content-length: 28
 Hello from RESTEasy Reactive
 ----
 
-You can also use `curl` command to access the endpoint:
+你还可以使用 `curl` 命令访问 endpoint:
 
 [source,sh]
 ----
 curl localhost:8080/hello
 ----
 
-Keep *running* your Quarkus dev mode!! 
+开发过程中，包括一直 *running* Quarkus 开发模式!! 
 
 ➡️ link:./3-deploy-quarkus-functions.adoc[3. 在Red Hat OpenShift Serverless上部署Function]
 
