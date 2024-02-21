@@ -1,6 +1,7 @@
 = 7. 汇总
 
-You've learned today how quickly Java developers can create cloud-native microservice project using https://quarkus.io[Quarkus^]. Then, the applications were deployed to serverless functions to https://aws.amazon.com/lambda[AWS Lambda^] and https://kubernetes.io[Kubernetes^] https://knative.dev/docs[Knative^] with `JVM` and `Native` mode with the key benefits of Quarkus as below:
+今天，您已经了解到Java开发人员使用https://quarkus.io[Quarkus^]。然后，将应用程序部署到OpenShift serverless的无服务器功能中。
+通过 `JVM` and `Native` 模式，您还可以收获如下Quarkus的特色能力:
 
 * Move as much as possible to build phase
 * Minimize runtime dependencies
@@ -8,11 +9,11 @@ You've learned today how quickly Java developers can create cloud-native microse
 * Introduce clear metadata contracts
 * Enhance developer joy
 
-The Quarkus native compilation allows you to have high resource density as almost same as https://go.dev[Go programming language^] on the Kubernetes clusters.
+Quarkus原生编译允许您拥有高资源密度，几乎与Kubernetes集群上的[Go编程语言^]一样。
 
 image::../images/quarkus-container-first.png[quarkus-container-first]
 
-Quarkus funqy also provides the other extensions for you to deploy the serverless functions to `Azure Function` and `Google Cloud Platform`.
+Quarkus funqy还为您提供其他扩展，以便将无服务器功能部署到“Azure function”和“GCP 平台”。
 
 image::../images/quarkus-funqy.png[quarkus-funqy]
 
