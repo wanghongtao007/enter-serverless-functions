@@ -121,7 +121,7 @@ oc label rev/enter-serverless-function-00001 app.openshift.io/runtime=quarkus --
 
 If you deployed the function multiple times, the revision number (e.g. _00001_) should be different.
 
-Add the **function** icon to the Knative service by running the following oc command:
+以下命令可以把该Knative service的图标改为 **function** 图标:
 
 [source,sh]
 ----
@@ -132,34 +132,16 @@ Go to the `Topology` view in _OpenShift Developer console_:
 
 image::../images/openshift-funq.png[openshift-funq]
 
-You might see the pod is already **terminated** since the scale-down-to-zero is `30` seconds by default in Knative Serving.
+你可能看到pod已经被 **terminated** 这是因为Knative Serving的默认scale-down-to-zero 时间是 `30` seconds.
 
-Copy the `Route URL` in Resource tab menu then invoke the function using HTTPie:
+你可以通过拷贝下面的url `Route URL` in Resource tab menu，重新激活该function pod:
 
-[source,sh]
-----
-echo '"Daniel Oh"' | http https://enter-serverless-function-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
-----
-
-The output should look like:
-
-[source,sh]
-----
-HTTP/1.1 200 OK
-content-length: 52
-content-type: application/json
-date: Wed, 2 Nov 2022 17:53:33 GMT
-server: envoy
-set-cookie: f301134c73b56fb5a7c418e831b3c2ee=a4a6175a464d76be57ebe4bdabb3decd; path=/; HttpOnly
-x-envoy-upstream-service-time: 23
-
-"Enter Serverless Functions with Quarkus, Daniel Oh"
 ----
 
 You can also use `curl` command to access the endpoint:
 [source,sh]
 ----
-curl -X POST -H "Content-Type: application/json" -d '"Daniel Oh"' https://enter-serverless-function-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com ; echo
+curl -X POST -H "Content-Type: application/json" -d '"Daniel Oh"' https://enter-serverless-function-xxxx.apps.xxxxx.com ; echo
 ----
 
 When you got back to the Topology view, you will see the Quarkus pod is automatically scaled up in a second:
@@ -171,6 +153,6 @@ image::../images/openshift-funq-up.png[openshift-funq-up]
 When you deploy a native executable, the build will take more than 5 mins to finish. You might also have an out of memory error. To fix it, make sure to set `Dquarkus.native.native-image-xmx=4g`.
 ====
 
-➡️ link:./6-generate-kn-functions.adoc[6. Generate a new function project using Kn func CLI]
+➡️ link:./4-generate-kn-functions.adoc[4. Generate a new function project using Kn func CLI]
 
 ⬅️ link:./2-generate-quarkus-project.adoc[2. generate quarkus project]
