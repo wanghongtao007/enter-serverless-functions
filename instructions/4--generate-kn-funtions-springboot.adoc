@@ -19,14 +19,14 @@ Run the following command:
 [source,sh]
 ----
 cd 
-kn func create quarkus-func -l quarkus -t cloudevents
+kn func create springboot-func -l springboot -t cloudevents
 ----
 
 The output should look like:
 
 [source,sh]
 ----
-Created quarkus Function in /serverless-workshop/quarkus-func
+Created springboot function in /root/springboot-func
 ----
 
 观察 function project 的文件： `func.yaml` and `Function.java`.
@@ -41,7 +41,7 @@ Deploy the function directly to Red Hat OpenShift. Make sure to change the direc
 
 [source,sh]
 ----
-cd quarkus-func
+cd springboot-func
 #kn func deploy -r YOUR_CONTAINER_REGISTRY -n YOUR_USERNAME-dev -v
 kn func deploy  -n admin-dev -v --registry registry.ocp4.example.com/admin-dev
 ----
