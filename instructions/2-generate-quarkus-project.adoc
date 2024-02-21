@@ -65,7 +65,7 @@ Tests paused
 Press [r] to resume testing, [o] Toggle test output, [:] for the terminal, [h] for more options>
 ----
 
-Press `r` to start the _continuous testing_ then press `d` to open a _DEV UI_. It will open a new web browser then access to http://localhost:8080/q/dev/[DEV UI^].
+按 `r`  继续 _continuous testing_ ，接下来按 `d` 打开 _DEV UI_. 将自动打开浏览器并且打开UI页面： http://localhost:8080/q/dev/[DEV UI^].
 
 您还会在右下角看到“所有测试都通过了”，指出了continuous testing的结果 .
 
