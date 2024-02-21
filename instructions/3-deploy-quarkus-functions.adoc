@@ -136,7 +136,6 @@ image::../images/openshift-funq.png[openshift-funq]
 
 你可以通过拷贝下面的url `Route URL` in Resource tab menu，重新激活该function pod:
 
-----
 
 You can also use `curl` command to access the endpoint:
 [source,sh]
