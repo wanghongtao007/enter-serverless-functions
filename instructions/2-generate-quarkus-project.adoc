@@ -1,10 +1,11 @@
 = 2. 创建一个新的Quarkus project
 
-Use `Quarkus CLI` to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
+使用 `Quarkus CLI` 创建一个基于Maven的Quarkus Project的脚手架，在本地的linux终端上，运行一下命令。
+注意，该跳板机最好能够连互联网，默认会从互联网拉镜像和下载maven依赖，如果不能，请配置maven的私服并且手动修改项目中的Dockerfile内容。
 
 [NOTE]
 ====
-You can use https://maven.apache.org/download.cgi[Maven^] or https://gradle.org/install[Gradle^] or Quarks tools in IDE instead of **Quarkus CLI**.
+从这里下载或者安装辅助工具 https://maven.apache.org/download.cgi[Maven^] ，如果不愿意用Quarkus CLI，也可以安装 https://gradle.org/install[Gradle^] or Quarks tools in IDE .
 ====
 
 [source,sh]
