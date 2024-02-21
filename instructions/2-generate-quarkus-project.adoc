@@ -1,4 +1,4 @@
-= 2. Generate a new Quarkus project
+= 2. 创建一个新的Quarkus project
 
 Use `Quarkus CLI` to scaffold a new Quarkus project based on Maven. Run the following command locally in the Terminal:
 
@@ -107,6 +107,6 @@ curl localhost:8080/hello
 
 Keep *running* your Quarkus dev mode!! 
 
-➡️ link:./5-deploy-quarkus-functions.adoc[5. Deploy the function to Red Hat OpenShift Serverless]
+➡️ link:./3-deploy-quarkus-functions.adoc[3. 在Red Hat OpenShift Serverless上部署Function]
 
 ⬅️ link:./1-prerequisites.adoc[1. Prerequisites]
