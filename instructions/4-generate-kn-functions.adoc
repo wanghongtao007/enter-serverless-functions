@@ -1,4 +1,4 @@
-= 6. Generate a new function project using Kn func CLI
+= 4. 利用Kn func客户端，创建一个新的function project
 
 [NOTE]
 ====
@@ -93,6 +93,6 @@ image::../images/openshift-cloudevent-log.png[openshift-cloudevent-log]
 
 === Congratulations!
 
-➡️ link:./7-summary.adoc[7. Summary]
+➡️ link:./5-summary.adoc[5. 汇总]
 
-⬅️ link:./5-deploy-quarkus-functions.adoc[5. Deploy the function to Red Hat OpenShift Serverless]
+⬅️ link:./3-deploy-quarkus-functions.adoc[3. 往Red Hat OpenShift Serverless上部署Function]
