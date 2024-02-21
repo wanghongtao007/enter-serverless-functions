@@ -2,7 +2,7 @@
 
 [NOTE]
 ====
-Download the Knative (kn) CLI from the Command Line Tools page. You can access the Command Line Tools page by clicking the question circle icon in the top right corner of the web console and selecting Command Line Tools in the list.
+你可以从官网或者直接从OpenShift集群中，下载Knative (kn) CLI ，在openshift console的右上角，点击问号图标，然后点击Command Line Tools page，该页面有几乎所有相关的工具下载链接.
 
 [source,sh]
 ----
@@ -29,11 +29,12 @@ The output should look like:
 Created quarkus Function in /serverless-workshop/quarkus-func
 ----
 
-Inspect the new function project such as `func.yaml` and `Function.java`.
+观察 function project 的文件： `func.yaml` and `Function.java`.
 
 Deploy the function directly to Red Hat OpenShift. Make sure to change the directory where the _func.yaml_ exists:
 
-Replace `YOUR_USERNAME` with your own account in the developer sandbox. You also need to replace `YOUR_CONTAINER_REGISTRY` with an external container registry that you want to push the image. For example, *quay.io/danieloh30* docker.io/wanhuatong
+
+在参数中指定自搭建的第三方镜像仓库的地址，不然工具会自动把产生的镜像推送到Docker.io，如果想用docker.io，那么需要在docker.io上提前建好project，对应`YOUR_CONTAINER_REGISTRY`字段，比如*quay.io/danieloh30* docker.io/wanhuatong
 
 期间出现输入框，输入镜像仓库的用户名和密码，另外镜像用到了jdk的外网镜像，跳板机需要联网：
 
@@ -55,14 +56,14 @@ Kn func uses https://buildpacks.io[Buildpack^] tool to build a function and depl
 [source,sh]
 ----
 Waiting for Knative Service to become ready
-Function deployed at URL: https://quarkus-func-doh-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+Function deployed at URL: https://quarkus-func-admin-dev.apps.xxxxx.com
 ----
 
-Go back to the `Topology` view in the developer sandbox, you will see a new function deployed. You can also overwrite the Quarkus label by _oc_ command or OpenShift web console:
+返回开发者沙盒中的“拓扑”视图，您将看到部署的新功能。您也可以通过_oc_命令或OpenShift web控制台覆盖Quarkus标签：
 
 image::../images/openshift-kn-funq.png[openshift-kn-funq]
 
-Send a new `cloudevent` message to the new function using Kn func emit:
+发送一条 `cloudevent` 到新的 function，使用Kn func :
 
 [source,sh]
 ----
@@ -70,7 +71,7 @@ Send a new `cloudevent` message to the new function using Kn func emit:
 kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=https://quarkus-func-admin-dev.apps.ocp4.example.com
 ----
 
-The output should look like:
+结果如下:
 
 [source,sh]
 ----
@@ -87,7 +88,7 @@ Data,
   }
 ----
 
-When you go to the pod logs in OpenShift console, you will see the same cloudevent message output:
+当您转到OpenShift控制台中的pod日志时，您将看到相同的cloudevent消息输出：
 
 image::../images/openshift-cloudevent-log.png[openshift-cloudevent-log]
 
