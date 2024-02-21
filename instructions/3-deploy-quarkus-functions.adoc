@@ -1,23 +1,34 @@
 = 5. 在Red Hat OpenShift Serverless上部署Function
 
-You'll use the https://developers.redhat.com/developer-sandbox[Developer Sandbox^] to deploy a Quarkus function. The sandbox allows developers to access Red Hat’s products and technologies without setup or configuration, and start developing quicker than ever before with our new sandbox environments for Red Hat OpenShift and CodeReady Workspaces. Try your hand at the technologies with our library of activities as well. You need to sign up the https://developers.redhat.com/developer-sandbox/get-started[Red Hat Developer Program^] first to provision a free sandbox. It will take less than 5 min from sign up to create a new cluster along the way.
+您可以使用https://developers.redhat.com/developer-sandbox[Developer Sandbox^] 部署 Quarkus function. 该沙盒允许开发人员在无需设置或配置的情况下访问Red Hat的产品和技术，并通过我们为Red Hat OpenShift和CodeReady工作区提供的新沙盒环境比以往任何时候都更快地开始开发。在我们的活动库中也可以尝试一下这些技术。你需要注册https://developers.redhat.com/developer-sandbox/get-started[红帽开发者计划^]首先提供一个免费的沙盒。从注册到创建新集群只需不到5分钟。
 
-Add an OpenShift and Knative Funqy extensions then remove an existing AWS extension:
+为了更好的适应于国内的开发和生产环境，本演示的后续内容，Openshift都是处于离线环境。
+
+增加 OpenShift 的 Knative Funqy extensions :
 
 [source,sh]
 ----
 quarkus ext add quarkus-funqy-knative-events quarkus-openshift
 
-//由于不是在aws上运行，所以下面这行可以不运行
-quarkus ext remove quarkus-funqy-amazon-lambda
 ----
 
-Update the `application.properties` for OpenShift Serverless deployment:
+更新 `src/main/resource/application.properties`  OpenShift Serverless 部署文件:
 
 [NOTE]
 ====
-Replace `username` with your own account in the developer sandbox.
-把下面的username可以改成admin（当前用户）默认的namespace还是在default里，
+如果使用沙盒，Replace `username` with your own account in the developer sandbox.
+本例中，使用admin-dev作为当前group，为了对应，创建新的的namespace，并切换，
+====
+
+[source,sh]
+----
+oc create project admin-dev
+
+----
+
+[NOTE]
+====
+本例中，使用第三方自建镜像库，并且没有可信证书，所以相关的信息如下修改。
 ====
 
 [source,yaml]
@@ -38,14 +49,14 @@ quarkus.openshift.build-strategy=docker
 
 [NOTE]
 ====
-If you want to use your own OpenShift cluster, you need to install _OpenShift Serverless Operator_ and _Knative-Serving_. Find more information https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html[here^].
+由于是自建的OpenShift集群，所以Serverless已提前安装 _OpenShift Serverless Operator_ and _Knative-Serving_. 相关部署可以查询 https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html[here^].
 ====
 
-Make sure to log in the Developer Sandbox:
+登录OpenShift集群:
 
 image::../images/copy-login.png[copy-login]
 
-Click on `DevSandbox` then click on `Display Token`. It will show *Log in with this token*.
+Click on `Display Token`. It will show *Log in with this token*.
 
 image::../images/copy-login-token.png[copy-login-token]
 
@@ -55,7 +66,7 @@ Run the following Maven command to deploy the function to OpenShift Serverless:
 
 [NOTE]
 ====
-把下面这个secret加到拉取身份里，不然会拉取失败
+把下面这个secret加到拉取身份里，application.properties文件只是加入了push信息，但是openshift拉取的信息没有提供，所以必须在这里提供，不然openshift从第三方镜像库中会拉取失败
 ====
 [source,sh]
 ----
@@ -82,7 +93,7 @@ spec:
 quarkus build --no-tests
 ----
 
-Or run the following maven package command:
+或者运行下述 maven package command:
 
 [source,sh]
 ----
@@ -91,12 +102,12 @@ Or run the following maven package command:
 如果不能连外网，这里会报错。修改以下位置：
 1、修改
 vi src/main/resources/application.properties
-增加
+确定
 quarkus.openshift.build-strategy=docker
 2、vi src/main/docker/Dockerfile.jvm
 FROM registry.ocp4.example.com/ubi8/openjdk-17:latest
 
-The output will end with `BUILD SUCCESS`. You can overwrite the pod label to show the Quarkus icon by running the following https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html[oc^] command:
+确定显示结果是： `BUILD SUCCESS`. You can overwrite the pod label to show the Quarkus icon by running the following https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html[oc^] command:
 
 [source,sh]
 ----
