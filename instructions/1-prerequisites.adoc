@@ -12,4 +12,4 @@
 
 * https://httpie.io[可选HTTPie^] 
 
-➡️ link:./2-generate-quarkus-project.adoc[2. Generate a new Quarkus project]
+➡️ link:./2-generate-quarkus-project.adoc[2. 创建一个新的Quarkus project]
