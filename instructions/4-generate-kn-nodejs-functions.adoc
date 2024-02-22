@@ -68,7 +68,7 @@ https://nodejs-func-admin-dev.apps.ocp4.example.com
 
 
 
-image::../images/openshift-kn-funq.png[openshift-kn-funq]
+image::../images/openshift-fun-node.png[openshift-kn-funq]
 
 发送一条 `cloudevent` 到新的 function，使用Kn func :
 
