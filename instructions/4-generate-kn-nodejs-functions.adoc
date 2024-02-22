@@ -72,6 +72,9 @@ https://nodejs-func-admin-dev.apps.ocp4.example.com
 kn func deploy  -n admin-dev -v --registry registry.ocp4.example.com/admin-dev --builder-image registry.ocp4.example.com/ubi8/nodejs-16:latest
 但是，当前的第三方镜像仓库的镜像必须匿名可以访问，否则会报：
 ====
+image::../images/openshift-func-deploy-nodejs-error.png[openshift-func-deploy-nodejs-error]
+
+改为registry.access.redhat.com/ubi8/nodejs-16后，结果如下:
 
 image::../images/openshift-func-node.png[openshift-kn-func]
 
@@ -83,7 +86,6 @@ image::../images/openshift-func-node.png[openshift-kn-func]
 kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t= https://nodejs-func-admin-dev.apps.ocp4.example.com
 ----
 
-结果如下:
 
 [source,sh]
 ----
