@@ -19,19 +19,17 @@ Run the following command:
 [source,sh]
 ----
 cd 
-kn func create quarkus-func -l quarkus -t cloudevents
+kn func create nodejs-func -l node -t cloudevents
 ----
 
 The output should look like:
 
 [source,sh]
 ----
-Created quarkus Function in /serverless-workshop/quarkus-func
+Created node Function in /root/nodejs-func
 ----
 
-观察 function project 的文件： `func.yaml` and `Function.java`.
-
-Deploy the function directly to Red Hat OpenShift. Make sure to change the directory where the _func.yaml_ exists:
+观察 function project 的文件： `func.yaml` and `package.json`.
 
 
 在参数中指定自搭建的第三方镜像仓库的地址，不然工具会自动把产生的镜像推送到Docker.io，如果想用docker.io，那么需要在docker.io上提前建好project，对应`YOUR_CONTAINER_REGISTRY`字段，比如*quay.io/danieloh30* docker.io/wanhuatong
@@ -55,6 +53,12 @@ Kn func uses https://buildpacks.io[Buildpack^] tool to build a function and depl
 
 [source,sh]
 ----
+[root@vdesktop nodejs-func]# kn func deploy  -n admin-dev -v --registry registry.ocp4.example.com/admin-dev
+Building function image
+STEP 1/8: FROM registry.access.redhat.com/ubi8/nodejs-16
+Trying to pull registry.access.redhat.com/ubi8/nodejs-16:latest...
+........
+
 Waiting for Knative Service to become ready
 Function deployed at URL: https://quarkus-func-admin-dev.apps.xxxxx.com
 ----
