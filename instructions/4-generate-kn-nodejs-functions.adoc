@@ -59,11 +59,14 @@ STEP 1/8: FROM registry.access.redhat.com/ubi8/nodejs-16
 Trying to pull registry.access.redhat.com/ubi8/nodejs-16:latest...
 ........
 
-Waiting for Knative Service to become ready
-Function deployed at URL: https://quarkus-func-admin-dev.apps.xxxxx.com
+{"level":30,"time":1708608168963,"pid":23,"hostname":"nodejs-func-00001-deployment-7ccc5bcc96-xtv2k","node_version":"v16.20.2","reqId":"req-3","res":{"statusCode":200},"responseTime":0.2801527976989746,"msg":"request completed"}
+Function deployed in namespace "admin-dev" and exposed at URL:
+https://nodejs-func-admin-dev.apps.ocp4.example.com
+✅ Function deployed in namespace "admin-dev" and exposed at URL: 
+   https://nodejs-func-admin-dev.apps.ocp4.example.com
 ----
 
-返回开发者沙盒中的“拓扑”视图，您将看到部署的新功能。您也可以通过_oc_命令或OpenShift web控制台覆盖Quarkus标签：
+
 
 image::../images/openshift-kn-funq.png[openshift-kn-funq]
 
