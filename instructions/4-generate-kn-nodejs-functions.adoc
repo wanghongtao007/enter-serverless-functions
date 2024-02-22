@@ -75,24 +75,16 @@ image::../images/openshift-fun-node.png[openshift-kn-funq]
 [source,sh]
 ----
 #kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=YOUR_FUNCTION_URL
-kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t=https://quarkus-func-admin-dev.apps.ocp4.example.com
+kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t= https://nodejs-func-admin-dev.apps.ocp4.example.com
 ----
 
 结果如下:
 
 [source,sh]
 ----
-p1.openshiftapps.com
-Context Attributes,
-  specversion: 1.0
-  type: function.output
-  source: function
-  id: ceb3f86a-bc4c-49db-8a82-d69b1ed81aab
-  datacontenttype: application/json
-Data,
-  {
-    "message": "Daniel Oh"
-  }
+[root@vdesktop nodejs-func]# kn func invoke --content-type="application/json" --data="Daniel Oh" -f=cloudevent -t= https://nodejs-func-admin-dev.apps.ocp4.example.com
+Received response
+
 ----
 
 当您转到OpenShift控制台中的pod日志时，您将看到相同的cloudevent消息输出：
