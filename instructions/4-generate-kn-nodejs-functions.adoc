@@ -66,7 +66,12 @@ https://nodejs-func-admin-dev.apps.ocp4.example.com
    https://nodejs-func-admin-dev.apps.ocp4.example.com
 ----
 
-
+[NOTE]
+====
+如果本地机也离线，那么可以用如下参数指定本地s2i镜像：
+kn func deploy  -n admin-dev -v --registry registry.ocp4.example.com/admin-dev --builder-image registry.ocp4.example.com/ubi8/nodejs-16:latest
+但是，当前的第三方镜像仓库的镜像必须匿名可以访问，否则会报：
+====
 
 image::../images/openshift-func-node.png[openshift-kn-func]
 
