@@ -89,7 +89,7 @@ Received response
 
 当您转到OpenShift控制台中的pod日志时，您将看到相同的cloudevent消息输出：
 
-image::../images/openshift-cloudevent-log.png[openshift-cloudevent-log]
+
 
 === Congratulations!
 
