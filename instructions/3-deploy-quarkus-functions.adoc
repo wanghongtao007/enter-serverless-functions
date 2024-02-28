@@ -72,6 +72,19 @@ ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
 
 ====
 
+[source,yaml]
+----
+FROM registry.ocp4.example.com/ubi8/openjdk-17
+
+ENV LANGUAGE='en_US:en'
+
+......
+
+ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
+
+----
+
+
 [NOTE]
 ====
 由于是自建的OpenShift集群，所以Serverless已提前安装 _OpenShift Serverless Operator_ and _Knative-Serving_. 相关部署可以查询 https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html[here^].
