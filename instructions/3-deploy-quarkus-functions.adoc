@@ -49,6 +49,31 @@ quarkus.openshift.build-strategy=docker
 
 [NOTE]
 ====
+上述参数，增加了部署到openshift的路径。并且选择了dockerfile的strategy。
+结合
+cat src/main/docker/Dockerfile.jvm
+的内容
+====
+[source,yaml]
+----
+FROM registry.access.redhat.com/ubi8/openjdk-17:1.18
+
+ENV LANGUAGE='en_US:en'
+
+......
+
+ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
+
+----
+
+[NOTE]
+====
+将FROM的内容修改为：registry.ocp4.example.com/ubi8/openjdk-17
+
+====
+
+[NOTE]
+====
 由于是自建的OpenShift集群，所以Serverless已提前安装 _OpenShift Serverless Operator_ and _Knative-Serving_. 相关部署可以查询 https://docs.openshift.com/container-platform/4.8/serverless/admin_guide/install-serverless-operator.html[here^].
 ====
 
