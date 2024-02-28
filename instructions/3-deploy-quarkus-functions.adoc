@@ -22,7 +22,7 @@ quarkus ext add quarkus-funqy-knative-events quarkus-openshift
 
 [source,sh]
 ----
-oc create project admin-dev
+oc create ns admin-dev
 
 ----
 
